@@ -1,2 +1,2 @@
 # secret-message
-a web application that enables users to exchange secret text messages.
+A web application that enables users to exchange secret text messages.
