@@ -1,17 +1,22 @@
 const { hash } = window.location;
-console.log(atob(hash.replace('#', '')));
+const showMessage = atob(hash.replace("#", ""));
+if (showMessage) {
+  document.querySelector("#message-form").classList.add("hide");
+  document.querySelector("#message-show").classList.remove("hide");
 
+  document.querySelector("h1").innerHTML = showMessage;
+}
 
-document.querySelector('form').addEventListener('submit', e => {
-    e.preventDefault();
+document.querySelector("form").addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    const input = document.querySelector('#message-input');
-    document.querySelector('#link-form').classList.remove('hide');
+  document.querySelector("#message-form").classList.add("hide");
+  document.querySelector("#link-form").classList.remove("hide");
 
-    const encrypted = btoa(input.value);
-    document.querySelector('#message-form').classList.add('hide');
+  const messageInput = document.querySelector("#message-input");
+  const encrypted = btoa(messageInput.value);
 
-    const linkInput = document.querySelector('#link-input');
-    linkInput.value = `${window.location}#${encrypted}`;
-    linkInput.select();
+  const linkInput = document.querySelector("#link-input");
+  linkInput.value = `${window.location}#${encrypted}`;
+  linkInput.select();
 });
